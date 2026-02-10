@@ -2,6 +2,7 @@ import React from 'react';
 import { Loader } from '../Loader';
 import { Todo } from '../../types/Todo';
 import { User } from '../../types/User';
+import cn from 'classnames';
 
 type Props = {
   selectedTodo: Todo | null;
@@ -15,10 +16,11 @@ export const TodoModal: React.FC<Props> = ({
   selectedTodo,
   selectedUser,
   isUserLoading,
+  isModalOpen,
   closeModal,
 }) => {
   return (
-    <div className="modal is-active" data-cy="modal">
+    <div className={cn('modal', { 'is-active': isModalOpen })} data-cy="modal">
       <div className="modal-background" />
 
       {isUserLoading ? (
@@ -55,7 +57,9 @@ export const TodoModal: React.FC<Props> = ({
 
               {' by '}
 
-              <a href={selectedUser?.email}>{selectedUser?.name}</a>
+              <a href={selectedUser ? `mailto:${selectedUser.email}` : '#'}>
+                {selectedUser?.name}
+              </a>
             </p>
           </div>
         </div>
