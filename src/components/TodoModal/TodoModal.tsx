@@ -35,10 +35,10 @@ export const TodoModal: React.FC<Props> = ({
               Todo #{selectedTodo?.id}
             </div>
 
-            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
             <button
               type="button"
               className="delete"
+              aria-label="Close modal"
               data-cy="modal-close"
               onClick={closeModal}
             />
@@ -57,7 +57,7 @@ export const TodoModal: React.FC<Props> = ({
 
               {' by '}
 
-              <a href={selectedUser ? `mailto:${selectedUser.email}` : '#'}>
+              <a href={selectedUser ? `mailto:${selectedUser.email}` : ''}>
                 {selectedUser?.name}
               </a>
             </p>

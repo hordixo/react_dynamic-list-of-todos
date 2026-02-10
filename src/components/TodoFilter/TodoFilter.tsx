@@ -13,7 +13,7 @@ export const TodoFilter: React.FC<Props> = ({
   onStatusChange,
   onQueryChange,
 }) => (
-  <form className="field has-addons">
+  <form className="field has-addons" onSubmit={e => e.preventDefault()}>
     <p className="control">
       <span className="select">
         <select
@@ -46,6 +46,7 @@ export const TodoFilter: React.FC<Props> = ({
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             data-cy="clearSearchButton"
+            aria-label="Clear search"
             type="button"
             className="delete"
             onClick={() => onQueryChange('')}
